@@ -10,9 +10,24 @@ namespace Lab11
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the Movie List Application!");
-            Console.WriteLine();
-            Movie movie = new 
-
+            var movies = MovieMaker.Create();
+            Console.WriteLine("There are {0} movies in the list", movies.Count);
+            do
+            {
+                Console.Write("Please select a category (scifi, horror, drama, animated): ");
+                string userInput = Console.ReadLine();
+                foreach (var item in movies)
+                    if (item.Category == userInput)
+                        Console.WriteLine(item.Title);
+                Console.Write("Try again? (y/n): ");
+                ConsoleKeyInfo repeat = Console.ReadKey();
+                Console.WriteLine();
+                if (!repeat.KeyChar.Equals('y'))
+                {
+                    break;
+                }
+            } while (true);
+            Console.WriteLine("Thank you!");
             Console.ReadKey();
         }
         //public static int GetNumber()
@@ -27,21 +42,5 @@ namespace Lab11
 
         //    return number;
         //}
-    }
-
-    class Movie
-    {
-        public string Title { get; set; }
-        public string Category { get; set; }
-        public Movie(string title, string category)
-        {
-            Title = title;
-            Category = category;
-            var movies = MovieMaker.Create();
-            foreach (var item in movies)
-                Console.WriteLine(item.Title);
-        }
-        enum Categories { animated = 1, drama = 2, horror = 3, scifi = 4 }
-        
     }
 }
