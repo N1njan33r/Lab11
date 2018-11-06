@@ -6,6 +6,7 @@ namespace Lab11
     {
         public static List<Movie> Create()
         {
+            // James - I really like this static method, cool stuff.
             var result = new List<Movie>();
 
             // scifi
