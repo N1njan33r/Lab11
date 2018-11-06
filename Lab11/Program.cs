@@ -10,12 +10,16 @@ namespace Lab11
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the Movie List Application!");
+
+            // James - I really like this static method and class to create your entire list, cool stuff.
             var movies = MovieMaker.Create();
             Console.WriteLine("There are {0} movies in the list", movies.Count);
             do
             {
                 Console.Write("Please select a category (scifi, horror, drama, animated): ");
                 string userInput = Console.ReadLine();
+                // James - oh I see you are doing double in linining here. an inline foreach and an inline if statement.
+                // although I like seeing it, I totally recommend using brackets to keep it more readable. 
                 foreach (var item in movies)
                     if (item.Category == userInput)
                         Console.WriteLine(item.Title);
